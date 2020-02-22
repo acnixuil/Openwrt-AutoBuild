@@ -121,4 +121,4 @@ jobs:
       if: steps.organize.outputs.status == 'success' && !cancelled()
       with:
         name: OpenWrt_firmware
-        path: ${{ env.FIRMWARE }}
+        path: ${{ env.FIRMWARE }}/openwrt-x86-64-combined-squashfs.img.gz
