@@ -16,8 +16,8 @@ on:
       - master
     paths:
       - 'pure_x64_ipv4.config'
-#  schedule:
-#    - cron: 0 8 * * 5
+  schedule:
+    - cron: 0 20 * * 5
   watch:
     types: [started]
 
