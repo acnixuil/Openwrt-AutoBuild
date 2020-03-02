@@ -18,8 +18,8 @@ on:
       - 'pure_full_x64_ipv4.config'
   schedule:
     - cron: 0 20 * * 5
-  #watch:
-    #types: [started]
+  watch:
+    types: [started]
 
 env:
   REPO_URL: https://github.com/coolsnowwolf/lede
