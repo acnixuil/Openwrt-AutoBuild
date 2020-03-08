@@ -6,7 +6,7 @@
 # Blog: https://p3terx.com
 #=================================================
 
-name: Pure Version IPV4
+name: Pure v1
 
 on:
   release:
@@ -15,16 +15,16 @@ on:
     branches:
       - master
     paths:
-      - 'pure_x64_ipv4.config'
+      - 'pure_v1.config'
   schedule:
     - cron: 0 20 * * 5
-  watch:
-    types: [started]
+  # watch:
+  #   types: [started]
 
 env:
   REPO_URL: https://github.com/coolsnowwolf/lede
   REPO_BRANCH: master
-  CONFIG_FILE: pure_x64_ipv4.config
+  CONFIG_FILE: pure_v1.config
   DIY_SH: diy.sh
   FREE_UP_DISK: false
   SSH_ACTIONS: false
@@ -34,7 +34,7 @@ env:
 
 jobs:
   build:
-    if: github.event.repository.owner.id == github.event.sender.id
+    # if: github.event.repository.owner.id == github.event.sender.id
     runs-on: ubuntu-latest
 
     steps:
