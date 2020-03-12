@@ -3,9 +3,9 @@ name: Build MT7628
 on: 
   release:
     types: [published]
- push:
+  push:
    tags:
-   - 'v*'
+     - 'v*'
    branches: 
      - master
   # schedule:
