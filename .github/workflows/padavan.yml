@@ -31,7 +31,8 @@ jobs:
         gcc-multilib
     - name: Clone source code
       run: |
-        cd toolchain-mipsel
+        git clone --depth=1 https://gitee.com/hanwckf/rt-n56u.git padavan
+        cd padavan/toolchain-mipsel
         mkdir -p toolchain-3.4.x
         wget https://github.com/hanwckf/padavan-toolchain/releases/download/v1.1/mipsel-linux-uclibc.tar.xz
         tar -xvf mipsel-linux-uclibc.tar.xz -C toolchain-3.4.x
@@ -42,7 +43,7 @@ jobs:
       run: |
         cwd=`pwd`
         CONFIG_TOOLCHAIN_DIR=${cwd//\//\\\/}\\/toolchain-mipsel
-        cd trunk
+        cd padavan/trunk
         for m in $TNAME;
         do
         if [ ! -f configs/templates/$m.config ] ; then
