@@ -1,12 +1,12 @@
 name: Padavan MI-NANO CI
 on:
-  release:
-    types: [published]
-  push:
-    tags:
-      - 'v*'
-    branches:
-      - master
+  # release:
+  #   types: [published]
+  # push:
+  #   tags:
+  #     - 'v*'
+  #   branches:
+  #     - master
   # schedule:
   #   - cron: 0 20 * * 5
   # watch:
