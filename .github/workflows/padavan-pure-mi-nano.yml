@@ -1,0 +1,62 @@
+name: Padavan MI-NANO CI
+on:
+  release:
+    types: [published]
+  push:
+    tags:
+      - 'v*'
+    branches:
+      - master
+  # schedule:
+  #   - cron: 0 20 * * 5
+  # watch:
+  #   types: [started]
+  build:
+    # if: github.event.repository.owner.id == github.event.sender.id
+    runs-on: ubuntu-18.04
+    env:
+      VERSION: latest
+      Tag: XiaoMi
+      Target: MI-NANO
+      Branch:  Standard
+      URL: https://github.com/SuzukiHonoka/rt-n56u
+    steps:
+    - name: Checkout - clone repository
+      uses: actions/checkout@v1
+    - name: Install - system build dependencies
+      run: sudo apt install unzip libtool-bin curl cmake gperf gawk flex bison nano xxd cpio git python-docutils gettext automake autopoint texinfo build-essential help2man pkg-config zlib1g-dev libgmp3-dev libmpc-dev libmpfr-dev libncurses5-dev libltdl-dev
+    - name: Download - RT-N56U source download
+      run: |
+        git clone --depth=1 $URL
+    - name: Pre Build toolchain - Crosstool-NG
+      run: |
+        cd rt-n56u
+        c_dir=$(pwd)
+        echo 'Current Working Dir:'$c_dir
+        ln -s $c_dir /opt/rt-n56u
+        cd toolchain-mipsel
+        ./clean_toolchain
+        #./build_toolchain
+        mkdir -p toolchain-3.4.x
+        wget https://github.com/hanwckf/padavan-toolchain/releases/download/v1.0/mipsel-linux-uclibc.tar.xz
+        tar -xvf mipsel-linux-uclibc.tar.xz -C toolchain-3.4.x
+    - name: Ready for Build firmware - Padavan
+      run: |
+        cd rt-n56u/trunk
+        ./clear_tree
+    - name: Build - Padavan
+      run: |
+        cd rt-n56u/trunk
+        ./build_firmware_modify $Target
+    - name: Release - push to release file
+      uses: softprops/action-gh-release@v1
+      if: startsWith(github.ref, 'refs/tags/')
+      with:
+        files: rt-n56u/trunk/images/*trx
+      env:
+        GITHUB_TOKEN: ${{ secrets.RELEASE }}
+    - name: Upload - push to artifact file
+      uses: actions/upload-artifact@v1
+      with:
+        name: Padavan-MI-NANO
+        path: rt-n56u/trunk/images/
