@@ -6,7 +6,7 @@
 # Blog: https://p3terx.com
 #=================================================
 
-name: Pure v2
+name: noIPV6_pure
 
 on:
   release:
