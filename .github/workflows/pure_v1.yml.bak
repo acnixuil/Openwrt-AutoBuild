@@ -16,8 +16,8 @@ on:
       - master
     paths:
       - 'pure_v1.config'
-  schedule:
-    - cron: 0 20 * * 5
+  # schedule:
+  #   - cron: 0 20 * * 5
   # watch:
   #   types: [started]
 
