@@ -129,6 +129,7 @@ jobs:
         rm -rf packages
         find -type f -name '*rootfs*' -delete
         find -type f -name '*vmlinuz*' -delete
+        find -type f -name '*combined*' -delete
         echo "::set-env name=FIRMWARE::$PWD"
         echo "::set-output name=status::success"
 
