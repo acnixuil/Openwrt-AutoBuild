@@ -8,7 +8,6 @@ Build OpenWrt using GitHub Actions
 ┌ theme-argon
 ├ diskman
 ├ TTYD
-├ adbyby-plus
 ├ ssr-plus
 ├ jd-dailybonus
 ├ unblockmusic
