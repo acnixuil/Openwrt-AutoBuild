@@ -11,6 +11,7 @@ Build OpenWrt using GitHub Actions
 ├ ssr-plus
 ├ jd-dailybonus
 ├ unblockmusic
+├ kms
 ├ UPnP
 ├ hd-idle
 ├ baidupcs-web
